@@ -206,7 +206,7 @@ def get_transform_object(js: str, var: str) -> List[str]:
     if not transform_match:
         # i commented out the line raising the error
         # raise RegexMatchError(caller="get_transform_object", pattern=pattern)
-        #logger.error(f"No match found for pattern: {pattern}")
+        # logger.error(f"No match found for pattern: {pattern}")
         return []  # Return an empty list if no match is found
 
     return transform_match.group(1).replace("\n", " ").split(", ")
@@ -253,7 +253,7 @@ def get_throttling_function_name(js: str) -> str:
         # Bpa.length || iha("")) }};
         # In the above case, `iha` is the relevant function name
         r'a\.[a-zA-Z]\s*&&\s*\([a-z]\s*=\s*a\.get\("n"\)\)\s*&&.*?\|\|\s*([a-z]+)',
-        r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])?\([a-z]\)',
+        r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])\([a-z]\)',
     ]
     logger.debug('Finding throttling function name')
     for pattern in function_patterns:
